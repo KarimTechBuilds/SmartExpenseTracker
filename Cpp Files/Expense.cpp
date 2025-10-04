@@ -2,7 +2,8 @@
 // Created by karim on 02/10/2025.
 //
 #include <iostream>
-#include<sstream>
+#include <sstream>
+#include <fstream>
 #include "../Header Files/Expense.h"
 using namespace std;
 
@@ -29,5 +30,9 @@ string Expense::extractDate(string d) {
     return date;
 }
 
-
+void Expense::saveExpense(string line) {
+    ofstream expenseFile("Expense.txt");
+    expenseFile << line;
+    cout << "Expense saved." << endl;
+}
 

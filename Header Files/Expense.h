@@ -17,6 +17,7 @@ public:
     int extractAmount(string a);
     string extractDate(string d);
     string extractCategory(string c);
+    void saveExpense(string line);
 };
 
 
