@@ -13,11 +13,13 @@ public:
     int amount;
     string date;
     string category;
-    string parseExpenseLine(string line);
-    int extractAmount(string a);
-    string extractDate(string d);
-    string extractCategory(string c);
+    string description;
+    Expense(string line) {
+        parseExpenseLine(line);
+    }
+    void parseExpenseLine(string line);
     void saveExpense(string line);
+    void displayExpense();
 };
 
 

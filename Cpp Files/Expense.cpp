@@ -7,32 +7,25 @@
 #include "../Header Files/Expense.h"
 using namespace std;
 
-string Expense::parseExpenseLine(string line) {
+void Expense::parseExpenseLine(string line) {
     istringstream stream(line);
     string string_amount;
     getline(stream, string_amount, '-');
+    amount=stoi(string_amount);
     getline(stream, category,'-');
     getline(stream, date, '-');
-    return string_amount;
-}
-
-
-int Expense::extractAmount(string a) {
-    amount=stoi(parseExpenseLine(a));
-    return amount;
-}
-
-string Expense::extractCategory(string c) {
-    return category;
-}
-
-string Expense::extractDate(string d) {
-    return date;
+    getline(stream, description, '-');
 }
 
 void Expense::saveExpense(string line) {
-    ofstream expenseFile("Expense.txt");
+    ofstream expenseFile("Expense.txt", ios::app);
     expenseFile << line;
     cout << "Expense saved." << endl;
 }
 
+void Expense::displayExpense() {
+    cout << "Date: " << date << "\n"
+    << "Category: "<< category <<"\n"
+    <<"Expense: " << amount <<"\n"
+    << "Description: " << description << endl;
+}
