@@ -13,7 +13,7 @@ void ExpenseManager::calculateTotalExpense(Expense expense) {
     totalExpense+= expense.amount;
 }
 
-void ExpenseManager::loadExpense(string targetDate) {
+void ExpenseManager::loadExpense(const string& targetDate) {
     bool found=false;
     string expenseLine;
     ifstream expenseFile("Expense.txt");
@@ -30,10 +30,14 @@ void ExpenseManager::loadExpense(string targetDate) {
     expenseFile.close();
 }
 
-void ExpenseManager::removeExpense(string targetDate) {
+void ExpenseManager::removeExpense(const string& targetDate) {
     ifstream readFile("Expense.txt");
     ofstream writeFile("Temp.txt");
     string expenseLine;
+    if (!readFile || !writeFile) {
+        cout << "Error opening file." << endl;
+        return;
+    }
     bool deleted=false;
     while (getline(readFile, expenseLine)) {
         if (expenseLine.find(targetDate) == string::npos) {
@@ -49,9 +53,36 @@ void ExpenseManager::removeExpense(string targetDate) {
     rename("Temp.txt", "Expense.txt");
 
     if (deleted) {
-        cout << "Expense on: " << targetDate << " deleted." << endl;
+        cout << "Expense on date: " << targetDate << " deleted." << endl;
     }
     else {
         cout << "Expense not found." << endl;
     }
+}
+
+void ExpenseManager::editExpense(const string& targetDate, const string& newExpenseLine) {
+    ifstream readFile("Expense.txt");
+    ofstream writeFile("Temp.txt");
+    string expenseLine;
+    bool edited=false;
+    while (getline(readFile, expenseLine )) {
+        if (expenseLine.find(targetDate) == string::npos) {
+            writeFile << expenseLine << endl;
+        }
+        else {
+            writeFile << newExpenseLine << endl;
+            edited=true;
+        }
+    }
+    readFile.close();
+    writeFile.close();
+    remove("Expense.txt");
+    rename("Temp.txt", "Expense.txt");
+    if (edited) {
+        cout << "Expense at date:"  << targetDate << " edited to: " << newExpenseLine << endl;
+    }
+}
+
+void addExpense() {
+
 }

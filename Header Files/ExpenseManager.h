@@ -12,9 +12,9 @@ class ExpenseManager {
 public:
     int totalExpense;
     void calculateTotalExpense(Expense amount);
-    void loadExpense(string targetDate);
-    void editExpense();
-    void removeExpense(string targetDate);
+    void loadExpense(const string& targetDate);
+    void editExpense(const string& targetDate, const string& newExpenseLine);
+    void removeExpense(const string& targetDate);
     void addExpense();
 };
 
