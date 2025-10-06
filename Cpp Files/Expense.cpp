@@ -7,7 +7,7 @@
 #include "../Header Files/Expense.h"
 using namespace std;
 
-void Expense::parseExpenseLine(string line) {
+void Expense::parseExpenseLine(const string& line) {
     istringstream stream(line);
     string string_amount;
     getline(stream, string_amount, '-');
@@ -17,9 +17,9 @@ void Expense::parseExpenseLine(string line) {
     getline(stream, description, '-');
 }
 
-void Expense::saveExpense(string line) {
+void Expense::saveExpense() const {
     ofstream expenseFile("Expense.txt", ios::app);
-    expenseFile << line;
+    expenseFile << amount << "-"<< category << "-" << date << "-" << description << endl;
     cout << "Expense saved." << endl;
 }
 

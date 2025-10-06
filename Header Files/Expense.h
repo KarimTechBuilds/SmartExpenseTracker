@@ -14,11 +14,11 @@ public:
     string date;
     string category;
     string description;
-    Expense(string line) {
+    Expense(const string& line) {
         parseExpenseLine(line);
     }
-    void parseExpenseLine(string line);
-    void saveExpense(string line);
+    void parseExpenseLine(const string& line);
+    void saveExpense() const;
     void displayExpense();
 };
 

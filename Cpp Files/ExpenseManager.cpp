@@ -3,14 +3,17 @@
 //
 
 
-#include <fstream>
 #include "../Header Files/ExpenseManager.h"
-
+#include <fstream>
 #include <iostream>
 
 
-void ExpenseManager::calculateTotalExpense(Expense expense) {
-    totalExpense+= expense.amount;
+int ExpenseManager::calculateTotalExpense() {
+    totalExpense=0;
+    for (const auto & expense : expenses) {
+        totalExpense+=expense.amount;
+    }
+    return totalExpense;
 }
 
 void ExpenseManager::loadExpense(const string& targetDate) {
@@ -83,6 +86,15 @@ void ExpenseManager::editExpense(const string& targetDate, const string& newExpe
     }
 }
 
-void addExpense() {
+void ExpenseManager::addExpense(const Expense& expense,const string& line) {
+    expenses.push_back(expense);
+    expense.saveExpense();
 
+}
+
+void ExpenseManager::displayAllExpenses() {
+    for ( auto & expense : expenses) {
+        expense.displayExpense();
+        cout << "-------------------" << endl;
+    }
 }
