@@ -10,17 +10,5 @@ int main() {
     string line;
     cin >> line;
     Expense expenseObj(line);
-    expenseObj.saveExpense(line);
-
-    /*ofstream expenseFile("Expensefile.txt");
-    bool stop=false;
-    while (!stop) {
-        string line;
-        cin >> line;
-        expenseFile << line << endl;
-        if (line=="stop") {
-            stop=true;
-            cout << "\033[1;34mProgram stopped.\033[1;34m";
-        }
-    }*/
+    expenseObj.saveExpense();
 }

@@ -24,8 +24,5 @@ void Expense::saveExpense() const {
 }
 
 void Expense::displayExpense() {
-    cout << "Date: " << date << "\n"
-    << "Category: "<< category <<"\n"
-    <<"Expense: " << amount <<"\n"
-    << "Description: " << description << endl;
+    cout << "Date: " << date << "-"<< "Category: "<< category << "-"<<"Expense: " << amount << "-" << "Description: " << description << endl;
 }

@@ -20,7 +20,10 @@ void ExpenseManager::loadExpense(const string& targetDate) {
     bool found=false;
     string expenseLine;
     ifstream expenseFile("Expense.txt");
-    expenseFile.is_open();
+    if (!expenseFile.is_open()) {
+        cout << "Error opening file" << endl;
+        return;
+    };
     while (getline(expenseFile, expenseLine)) {
         if (expenseLine.find(targetDate) != string::npos) {
             found=true;
@@ -89,7 +92,6 @@ void ExpenseManager::editExpense(const string& targetDate, const string& newExpe
 void ExpenseManager::addExpense(const Expense& expense,const string& line) {
     expenses.push_back(expense);
     expense.saveExpense();
-
 }
 
 void ExpenseManager::displayAllExpenses() {
