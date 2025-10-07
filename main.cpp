@@ -17,10 +17,10 @@ int main() {
     << "\033[1;34m-export (Exports the list of expenses.)\033[1;34m" << endl;
     bool stop = false;
     int eterations=0;
+    ExpenseManager manager;
+    ReportGenerator reportGenerator;
     while (!stop) {
         string line;
-        ExpenseManager manager;
-        ReportGenerator reportGenerator;
         if (eterations==0) {
             cout << "Please enter your expense:" << endl;
         }
