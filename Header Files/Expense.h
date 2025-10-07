@@ -10,7 +10,8 @@ using namespace std;
 
 class Expense{
 public:
-    int amount;
+    double amount;
+    bool error=false;
     string date;
     string category;
     string description;

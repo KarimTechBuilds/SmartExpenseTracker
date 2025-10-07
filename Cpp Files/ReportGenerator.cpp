@@ -14,6 +14,8 @@
 #include <iostream>
 using namespace std;
 
+ReportGenerator::ReportGenerator() {}
+
 
 void ReportGenerator::generateReport( const string& inputDate1, const string& inputDate2, ExpenseManager& manager) {
     periodExpense=0;
@@ -37,9 +39,11 @@ void ReportGenerator::generateReport( const string& inputDate1, const string& in
 
 void ReportGenerator::generateReport(const string& category, ExpenseManager& manager) {
     int times=0;
+    periodExpense=0;
     for (auto& expense: manager.expenses) {
         if (category==expense.category) {
             expense.displayExpense();
+            periodExpense+= expense.amount;
             times++;
         }
     }

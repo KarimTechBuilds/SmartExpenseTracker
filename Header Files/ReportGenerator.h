@@ -10,6 +10,7 @@
 
 class ReportGenerator {
 public:
+    ReportGenerator();
     int periodExpense=0;
     void generateReport(const string& inputDate1, const string& inputDate2, ExpenseManager& manager);
     void generateReport(const string& category, ExpenseManager& manager);

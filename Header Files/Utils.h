@@ -13,7 +13,7 @@ class Utils {
     int day;
     int month;
     int year;
-    int convertStringToInt(const string& date1);
+    int convertStringToInt(const string& date);
 };
 
 

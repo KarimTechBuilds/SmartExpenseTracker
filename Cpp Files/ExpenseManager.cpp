@@ -4,8 +4,11 @@
 
 
 #include "../Header Files/ExpenseManager.h"
+#include "../Header Files/Utils.h"
 #include <fstream>
 #include <iostream>
+
+ExpenseManager::ExpenseManager() {}
 
 
 int ExpenseManager::calculateTotalExpense() {
@@ -36,10 +39,11 @@ void ExpenseManager::loadExpense(const string& targetDate) {
     expenseFile.close();
 }
 
-void ExpenseManager::removeExpense(const string& targetDate) {
+void ExpenseManager::removeExpense(const string& targetDate, const int& expenseNumber) {
     ifstream readFile("Expense.txt");
     ofstream writeFile("Temp.txt");
     string expenseLine;
+    int expenseNumberToDelete=0;
     if (!readFile || !writeFile) {
         cout << "Error opening file." << endl;
         return;
@@ -49,7 +53,11 @@ void ExpenseManager::removeExpense(const string& targetDate) {
         if (expenseLine.find(targetDate) == string::npos) {
             writeFile << expenseLine << endl;
         }
-        else {
+        if (expenseLine.find(targetDate) != string::npos && expenseNumberToDelete!=expenseNumber) {
+            writeFile << expenseLine << endl;
+            expenseNumberToDelete++;
+        }
+        else if (expenseLine.find(targetDate) != string::npos && expenseNumberToDelete== expenseNumber) {
             deleted=true;
         }
     }
@@ -90,6 +98,9 @@ void ExpenseManager::editExpense(const string& targetDate, const string& newExpe
 }
 
 void ExpenseManager::addExpense(const Expense& expense,const string& line) {
+    if (expense.error) {
+        return;
+    }
     expenses.push_back(expense);
     expense.saveExpense();
 }
@@ -98,5 +109,15 @@ void ExpenseManager::displayAllExpenses() {
     for ( auto & expense : expenses) {
         expense.displayExpense();
         cout << "-------------------" << endl;
+    }
+}
+
+void ExpenseManager::displayExpensePeriod(const string& date) {
+    Utils util;
+    for ( auto & expense : expenses) {
+        if (util.convertStringToInt(expense.date)==util.convertStringToInt(date)) {
+            expense.displayExpense();
+            repeatNumber++;
+        }
     }
 }
