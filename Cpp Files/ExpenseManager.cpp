@@ -7,6 +7,7 @@
 #include "../Header Files/Utils.h"
 #include <fstream>
 #include <iostream>
+using namespace std;
 
 ExpenseManager::ExpenseManager() {}
 
