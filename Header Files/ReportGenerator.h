@@ -12,10 +12,10 @@ class ReportGenerator {
 public:
     ReportGenerator();
     int periodExpense=0;
-    void generateReport(const string& inputDate1, const string& inputDate2, ExpenseManager& manager);
-    void generateReport(const string& category, ExpenseManager& manager);
-    void exportExpenseList(const string& fileName, ExpenseManager& manager);
-    void sortExpenseList(const string& sortType, ExpenseManager& manager);
+    void generateReport(const std::string& inputDate1, const std::string& inputDate2, ExpenseManager& manager);
+    void generateReport(const std::string& category, ExpenseManager& manager);
+    void exportExpenseList(const std::string& fileName, ExpenseManager& manager);
+    void sortExpenseList(const std::string& sortType, ExpenseManager& manager);
 
 };
 

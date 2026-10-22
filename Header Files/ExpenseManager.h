@@ -6,7 +6,7 @@
 #define EXPENSEMANAGER_H
 #include "Expense.h"
 #include <vector>
-using namespace std;
+
 
 
 class ExpenseManager {
@@ -14,14 +14,14 @@ public:
     int totalExpense;
     int repeatNumber;
     ExpenseManager();
-    vector<Expense> expenses;
+    std::vector<Expense> expenses;
     int calculateTotalExpense();
-    void loadExpense(const string& targetDate);
-    void editExpense(const string& targetDate, const string& newExpenseLine);
-    void removeExpense(const string& targetDate, const int& expenseNumber);
-    void addExpense(const Expense& expense, const string& line);
+    void loadExpense(const std::string& targetDate);
+    void editExpense(const std::string& targetDate, const std::string& newExpenseLine);
+    void removeExpense(const std::string& targetDate, const int& expenseNumber);
+    void addExpense(const Expense& expense, const std::string& line);
     void displayAllExpenses();
-    void displayExpensePeriod(const string& date);
+    void displayExpensePeriod(const std::string& date);
 };
 
 

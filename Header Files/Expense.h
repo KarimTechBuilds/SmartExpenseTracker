@@ -5,20 +5,20 @@
 #ifndef EXPENSE_H
 #define EXPENSE_H
 #include <string>
-using namespace std;
+
 
 
 class Expense{
 public:
     double amount;
     bool error=false;
-    string date;
-    string category;
-    string description;
-    Expense(const string& line) {
+    std::string date;
+    std::string category;
+    std::string description;
+    Expense(const std::string& line) {
         parseExpenseLine(line);
     }
-    void parseExpenseLine(const string& line);
+    void parseExpenseLine(const std::string& line);
     void saveExpense() const;
     void displayExpense();
 };
